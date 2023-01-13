@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import userEvent from "@testing-library/user-event";
+import React, { useState } from "react";
+import FunctionBox from "./FunctionBox";
+import ClassBox from "./ClassBox";
 function App() {
+  let [show, setshow] = useState(false);
+
+  let btnclick = () => {
+    setshow(!show);
+  };
+
+  let [show2, setshow2] = useState(false);
+  let btn2click = () => {
+    setshow2(!show2);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 id="txt">Styling Using Function and Class Components</h1>
+      <button id="btn1" onClick={btnclick}>
+        To see styling in Functional Component
+      </button>
+      <button id="btn2" onClick={btn2click}>
+        To see styling in Class Component
+      </button>
+
+      <div>{show ? <FunctionBox /> : ""}</div>
+      <div>{show2 ? <ClassBox /> : ""}</div>
     </div>
   );
 }
